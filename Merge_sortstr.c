@@ -10,6 +10,9 @@ char *lines[line_cnt]; //global variable
 void merge(char **strings, char **left, char **right, int left_cnt, int right_cnt) {
     int i,j,k;
     i = k = j = 0;
+    for(int l = 0; l<=left_cnt + right_cnt; l++ ) {
+        strings[l] = malloc(sizeof(char)*101);
+    }
     while(i<left_cnt && j<right_cnt) {
         if(strcmp(left[i],right[j])<0) {
             strcpy(strings[k],left[i]);
@@ -46,6 +49,9 @@ void merge_sort(char **strings, int cnt) {
     for(i = mid; i<cnt;i++) {
         right[i-mid] = malloc(sizeof(char)*101);
         strcpy(right[i-mid],strings[i]);
+    }
+    for(i = 0; i<cnt;i++) {
+        free(strings[i]);
     }
     merge_sort(left, mid); //recursion call do the left 1st
     merge_sort(right,len - mid); //recursion call back to the right
