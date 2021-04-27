@@ -3,7 +3,7 @@
 #include <string.h>
 #include <sys/time.h>
 #define buf_size 100
-#define line_cnt 3
+#define line_cnt 1000000
 
 char *lines[line_cnt]; //global variable
 
@@ -38,7 +38,6 @@ void merge(char **strings, char **left, char **right, int left_cnt, int right_cn
 }
 void merge_sort(char **strings, int cnt) {
     int mid, i;
-    // printf("check\n");
     if(cnt<2) return; // lenght = 1, mean no more split.
     mid = cnt/2;
     char *left[mid];
@@ -67,14 +66,14 @@ void merge_sort(char **strings, int cnt) {
 }
 
 int main() {
-    // FILE *fp;
+    FILE *fp;
     struct  timeval start;      
     struct  timeval end;       
     unsigned  long time;        
-    // fp = fopen("dataset2.txt","r");
+    fp = fopen("dataset2.txt","r");
     int cnt = 0;
     char line[buf_size+1];
-    while(fgets(line,buf_size+2,stdin)) {
+    while(fgets(line,buf_size+2,fp)) {
         lines[cnt] = malloc(sizeof(char)*101);
         strcpy(lines[cnt],line);
         cnt++;
@@ -86,7 +85,7 @@ int main() {
     for(int i=0;i<cnt;i++) {
         printf("%s",lines[i]);
     }
-    // fclose(fp);
+    fclose(fp);
     time = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;   
     printf("Sorting performance (Merge) %ld us (equal %f sec)\n", time, time / 1000000.0);
 }
