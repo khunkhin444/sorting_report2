@@ -48,7 +48,7 @@ void merge_sort(char **strings, int cnt) {
         strcpy(right[i-mid],strings[i]);
     }
     merge_sort(left, mid); //recursion call do the left 1st
-    merge_sort(right,mid); //recursion call back to the right
+    merge_sort(right,len - mid); //recursion call back to the right
     merge(strings, left, right, mid, cnt-mid); //merge to sub-array
     for(i=0;i<mid;i++) {
         free(left[i]);
