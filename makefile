@@ -1,2 +1,2 @@
 all: QuickSort.c dataset1.txt
-  gcc quicksort.c -o result
+  gcc Quicksort.c -o result
