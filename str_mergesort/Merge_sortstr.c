@@ -4,8 +4,6 @@
 #include <sys/time.h>
 #define buf_size 100
 #define line_cnt 1000000
-
-
 void merge(char **strings, char **left, char **right, int left_cnt, int right_cnt) {
     int i,j,k;
     i = k = j = 0;
@@ -37,20 +35,19 @@ void merge(char **strings, char **left, char **right, int left_cnt, int right_cn
 }
 void merge_sort(char **strings, int cnt) {
     int mid, i;
+    // printf("check\n");
     if(cnt<2) return; // lenght = 1, mean no more split.
     mid = cnt/2;
     char *left[mid];
     char *right[cnt-mid];
-    
     for(i = 0; i<mid;i++) {
         left[i] = malloc(sizeof(char)*101);
         strcpy(left[i],strings[i]);
+        free(strings[i]);
     }
     for(i = mid; i<cnt;i++) {
         right[i-mid] = malloc(sizeof(char)*101);
         strcpy(right[i-mid],strings[i]);
-    }
-    for(i = 0; i<cnt;i++) {
         free(strings[i]);
     }
     merge_sort(left, mid); //recursion call do the left 1st
@@ -62,4 +59,29 @@ void merge_sort(char **strings, int cnt) {
     for(i = mid; i<cnt;i++) {
         free(right[i-mid]);
     }
+}
+
+int main() {
+    FILE *fp;
+    struct  timeval start;
+    char *lines[line_cnt];
+    struct  timeval end;       
+    unsigned  long time;
+    fp = fopen("dataset2.txt","r");
+    int cnt = 0;
+    char line[buf_size+1];
+    while(fgets(line,buf_size+2,fp)) {
+        lines[cnt] = malloc(sizeof(char)*101);
+        strcpy(lines[cnt],line);
+        cnt++;
+    }
+    gettimeofday(&start,NULL);
+    merge_sort(lines, line_cnt);
+    gettimeofday(&end,NULL);
+    for(int i=0;i<cnt;i++) {
+        printf("%s",lines[i]);
+    }
+    fclose(fp);
+    time = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;   
+    printf("Sorting performance (Merge) %ld us (equal %f sec)\n", time, time / 1000000.0);
 }
