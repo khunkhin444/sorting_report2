@@ -24,9 +24,7 @@ int main() {
     gettimeofday(&end,NULL);
     for(i=0;i<line_cnt;i++) {
         printf("%s",lines[i]);
-    }
-    for(i=0;i<cnt;i++) {
-    	free(lines[i]);
+        free(lines[i]);
     	free(tmp[i]);
     }
     fclose(fp);
