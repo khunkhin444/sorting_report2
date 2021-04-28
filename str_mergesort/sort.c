@@ -1,8 +1,6 @@
 #include "sort.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#define buf_size 100
 #define line_cnt 1000000
 
 char *lines[line_cnt];
