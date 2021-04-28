@@ -1,7 +1,6 @@
 #include "sort.h"
 #include <stdio.h>
 #include <string.h>
-#define line_cnt 1000000
 
 char *lines[line_cnt];
 char *tmp[line_cnt];
