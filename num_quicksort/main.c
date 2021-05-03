@@ -1,22 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <sys/time.h>
 #include "sort.h"
 #define buf_size 1000000
 int main() {
-    FILE *fp;
     struct timeval start;
     struct timeval end;
     unsigned long time;
-    fp = fopen("dataset1.txt","r");
-    int arr[buf_size-1];
-    char line[2048];
+    int arr[buf_size];
     int i=0;
     int tmp;
-    while(fgets(line,2048,fp)) {
-        tmp = atoi(line);
-        arr[i] = tmp;
-        i++;
+    srand(time(NULL));
+    for(i=0;i<1000000;i++) {
+        arr[i]=rand();
     }
     gettimeofday(&start,NULL);
     quick_sort(arr, 0, buf_size-1);
