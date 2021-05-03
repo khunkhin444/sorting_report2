@@ -7,7 +7,7 @@
 int main() {
     struct timeval start;
     struct timeval end;
-    unsigned long time;
+    unsigned long sec;
     int arr[buf_size];
     int i=0;
     int tmp;
@@ -18,8 +18,8 @@ int main() {
     gettimeofday(&start,NULL);
     quick_sort(arr, 0, buf_size-1);
     gettimeofday(&end,NULL);
-    time = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
+    sec = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
     for(i=0;i<buf_size;i++) printf("%d\n",arr[i]);
     fclose(fp);
-    printf("Sorting performance (Heap) %ld us (equal %f sec)\n",time,time/100000.0);
+    printf("Sorting performance (Heap) %ld us (equal %f sec)\n",sec,sec/1000000.0);
 }
