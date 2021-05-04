@@ -1,4 +1,4 @@
 all: main.c sort.c sort.h
-     gcc main.c sort.c sort.h -o output
+	gcc main.c sort.c sort.h -o output
 clean:
-     rm -f output
+	rm -f output
