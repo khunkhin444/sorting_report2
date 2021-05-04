@@ -20,7 +20,7 @@ FILE *fp;
         i++;
     }
     gettimeofday(&start,NULL);
-    merge_sort(arr, buf_size-1);
+    merge_sort(arr, buf_size);
     gettimeofday(&end,NULL);
     time = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
     for(i=0;i<buf_size;i++) printf("%d\n",arr[i]);
