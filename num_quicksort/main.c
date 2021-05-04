@@ -20,7 +20,6 @@ int main() {
     }
     gettimeofday(&start,NULL);
     quick_sort(arr, 0, buf_size-1);
-    quick_sort(arr, 0, buf_size-1);
     gettimeofday(&end,NULL);
     time = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
     for(i=0;i<buf_size;i++) printf("%d\n",arr[i]);
