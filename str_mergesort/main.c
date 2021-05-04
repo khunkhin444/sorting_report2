@@ -2,7 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
+
 #define line_cnt 1000000
+
+char *lines[line_cnt];
+char *tmp[line_cnt];
+
 int main() {
     FILE *fp;
     struct  timeval start;
