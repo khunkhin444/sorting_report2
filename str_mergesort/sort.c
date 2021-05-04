@@ -2,9 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 
-char *lines[line_cnt];
-char *tmp[line_cnt];
-
 void merge(int start_left, int end_left, int start_right, int end_right, int size_left, int size_right) { //merge function
     int i,j,k;	
     int total = size_left + size_right;
